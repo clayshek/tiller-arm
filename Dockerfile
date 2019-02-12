@@ -1,16 +1,18 @@
-FROM alpine:3.7
+FROM alpine:3.9
 
-RUN apk update && \
-  apk add ca-certificates socat wget tar && \
-  rm -rf /var/cache/apk/*
+ENV HELM_VERSION=2.12.3
+
+RUN apk update
+RUN apk add ca-certificates socat wget tar
+RUN rm -rf /var/cache/apk/*
 
 ENV HOME /tmp
 
-RUN wget -O /tmp/helm.tgz https://storage.googleapis.com/kubernetes-helm/helm-v2.12.1-linux-arm.tar.gz && \
-  tar xvf /tmp/helm.tgz && \
-  mv ./linux-arm/helm /helm && \
-  mv ./linux-arm/tiller /tiller && \
-  rm -rf ./linux-arm /tmp/helm.tgz
+RUN wget -O /tmp/helm.tgz https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-arm.tar.gz
+RUN tar xvf /tmp/helm.tgz
+RUN mv ./linux-arm/helm /helm
+RUN mv ./linux-arm/tiller /tiller
+RUN rm -rf ./linux-arm /tmp/helm.tgz
 
 EXPOSE 44134
 USER nobody
