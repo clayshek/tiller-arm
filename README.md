@@ -9,7 +9,7 @@ Docker image for Tiller (Helm server) for ARM architecture (Raspberry Pi), on al
 
 Run helm init, using the <a href="https://cloud.docker.com/repository/docker/clayshek/tiller-arm">clayshek/tiller-arm</a> Docker image, or first clone this repo, modify Dockerfile as desired, then build and push new image to use with helm init. 
 
-Prerequisite: Requires configuring Kubernetes <a href="https://docs.helm.sh/using_helm/#role-based-access-control">RBAC for Tiller service account</a>. 
+Prerequisite: Requires configuring Kubernetes <a href="https://docs.helm.sh/using_helm/#role-based-access-control">RBAC for Tiller service account</a>. The tiller-rbac-config.yml included in this repo can be used for this.
 
 Example:
 
